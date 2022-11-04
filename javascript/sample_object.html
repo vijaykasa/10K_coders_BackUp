@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object creation</title>
+</head>
+
+<body>
+    <script>
+        var user1 = {
+            Name: "vijay",
+            age: "25",
+            email: "vijay984802@gmail.com",
+            mobile: 000000000
+        }
+
+        user1.mobile = 9110709448;
+        user1["age"] = 24;
+
+        for (i in user1) {
+            console.log(i + " : " + user1[i])
+            document.write(i + " : " + user1[i] + "<br>")
+        }
+
+    </script>
+</body>
+
+</html>
