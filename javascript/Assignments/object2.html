@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var user1 = {
+            myName: "sai",
+            id: 225522,
+            city: "tanuku",
+            phone: 9852550220
+        }
+        for (i in user1) {
+            if (i != 255522) {
+                console.log(user1.id = 454627)
+            }
+
+        }
+        for (i in user1) {
+            document.write(i + " : " + user1[i] + "<br>")
+        }
+
+
+        var user2 = new Object();
+        user2.myName = "vamsi";
+        user2.id = 5465335;
+        user2.city = "tpg";
+        user2.phone = 68532563546;
+
+
+        document.write('<br>')
+
+        for (a in user2) {
+            document.write(a + " : " + user2[a] + "<br>")
+        }
+
+        function Model(myName, id, city, phone) {
+            this.myName = myName;
+            this.id = id;
+            this.city = city;
+            this.phone = phone;
+        }
+
+        var user3 = new Model("nani", 25225, "hyd", 3682202552);
+
+        document.write('<br>')
+
+        for (b in user3) {
+            document.write(b + " : " + user3[b] + "<br>")
+        }
+
+
+        class classModel {
+            constructor(myName, id, city, phone) {
+                this.myName = myName;
+                this.id = id;
+                this.city = city;
+                this.phone = phone;
+            }
+        }
+        var user4 = new classModel("ravi", 2586444, "kakinada", 225132243);
+
+
+        document.write('<br>')
+
+        for (c in user4) {
+            document.write(c + " : " + user4[c] + "<br>")
+        }
+    </script>
+</body>
+
+</html>

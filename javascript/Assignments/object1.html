@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //creating an object using literal way
+
+        var accountHolder = {
+            userName: "mahesh",
+            DOB: "27/11/1997",
+            AccountNo: 202102300
+
+        }
+
+        console.log(typeof accountHolder.DOB)
+
+        document.write("creating an object using literal way... <br>")
+
+        document.write("<br>")
+
+        for (i in accountHolder) {
+            document.write(i + " : " + accountHolder[i] + "<br>")
+        }
+
+        //creating an object using new constructor
+
+        var accountHolder2 = new Object()
+        accountHolder2.userName = "ramesh";
+        accountHolder2.DOB = "11/8/2000";
+        accountHolder2.AccountNo = 20202020;
+
+        document.write("<br>")
+
+        document.write("creating an object using new object constructor... <br>")
+
+        document.write("<br>")
+
+        for (a in accountHolder2) {
+            document.write(a + " : " + accountHolder2[a] + "<br>")
+        }
+
+        //creating an object using constructor function
+
+
+        function objectModel(Name, DOB, AccountNo) {
+            this.userName = Name;
+            this.DOB = DOB;
+            this.AccountNo = AccountNo;
+        }
+
+        var accountHolder3 = new objectModel("raju", "18/5/1998", 2586652254)
+
+
+        document.write("<br>")
+
+        document.write("creating an object using constructor function... <br>")
+
+        document.write("<br>")
+
+        for (b in accountHolder3) {
+            document.write(b + " : " + accountHolder3[b] + "<br>")
+
+        }
+
+        //creating an object using class
+
+        class classModel {
+            constructor(Name, DOB, AccountNo) {
+                this.userName = Name;
+                this.DOB = DOB;
+                this.AccountNo = AccountNo;
+            }
+        }
+        var accountHolder4 = new classModel("hari", "19/7/1988", 25866452)
+
+
+        document.write("<br>")
+
+        document.write("creating an object using class... <br>")
+
+        document.write("<br>")
+
+        for (c in accountHolder4) {
+            document.write(c + " : " + accountHolder4[c] + "<br>")
+
+        }
+
+    </script>
+</body>
+
+</html>
