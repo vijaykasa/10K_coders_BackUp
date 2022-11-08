@@ -15,16 +15,16 @@
                 Name: "kl Rahul",
                 Runs: 4,
                 Balls: 8,
-                Fours: 1,
-                sixers: 1,
+                Fours: 0,
+                sixers: 0,
                 SR: 50,
             },
             {
                 Name: "Rohit Sharma",
                 Runs: 4,
                 Balls: 7,
-                Fours: 1,
-                sixers: 1,
+                Fours: 0,
+                sixers: 0,
                 SR: 57.14
             },
             {
@@ -69,7 +69,7 @@
             },
             {
                 Name: "Ravichandran Ashwin",
-                Runs: 0,
+                Runs: 1,
                 Balls: 1,
                 Fours: 0,
                 sixers: 0,
@@ -99,7 +99,7 @@
             document.write
         });
 
-        // cimulating the total Runs using reduce method
+        // cumulating the total Runs using reduce method
 
         var totalScore = TeamPlayers.reduce((initialValue, player) => {
 
@@ -118,34 +118,25 @@
         //finding the total 4s hit by player using reduce method
 
 
-        var totalFours = TeamPlayers.reduce((initialValue, player) => {
+        var totalFours = TeamPlayers.reduce((total, player) => {
 
-            if (initialValue.Fours) {             // if statment for to switch the initial object into value
+            total = total + player.Fours;
 
-                return initialValue.Fours + player.Fours
-
-            }
-            else {
-                return initialValue + player.Fours
-            }
-        })
+            return total
+        }, 0)
 
         document.write('<br>')
         document.write("total foures hit by all players" + " : " + totalFours)
 
         //finding the total 6s hit by player using reduce method
 
-        var totalSixers = TeamPlayers.reduce((initialValue, player) => {
+        var totalSixers = TeamPlayers.reduce((total, player) => {
 
-            if (initialValue.sixers) {             // if statment for to switch the initial object into value
+            total = total + player.sixers;
 
-                return initialValue.sixers + player.sixers
-                console.log(initialValue)
-            }
-            else {
-                return initialValue + player.sixers
-            }
-        })
+            return total
+
+        }, 0)
 
         document.write('<br>')
         document.write("total sixers hit by all players" + " : " + totalSixers)
@@ -168,7 +159,7 @@
             document.write("Name:" + player.Name + "  /   " + "Runs:" + player.Runs + "<br>")
         })
 
-        // finding the player who got high score aboue the 80 Runs using filter method
+        // finding the player who got high score above the 80 Runs using filter method
 
 
 
@@ -179,7 +170,7 @@
 
         document.write('<br>')
         document.write('<br>')
-        document.write('who got aboue the 80 runs names displayed below:')
+        document.write('who got above the 80 runs names displayed below:')
         document.write('<br>')
         document.write('<br>')
 
@@ -206,8 +197,39 @@
             document.write("some player  got 0 score")
         }
 
+        //findout the heighest scroe 
+
+        var higherScore = TeamPlayers.reduce((high, player) => {
+
+            if (high > player.Runs) {
+                return high;
+
+            }
+            else {
+                return high = player.Runs;
+            }
+
+        }, 0)
+
+        document.write('<br>')
+
+        document.write('<br>')
+        document.write("highest score is " + higherScore)
 
 
+        var playerhigh = TeamPlayers.filter((player) => {
+
+            return player.Runs == higherScore
+
+        })
+
+        //accesing high score player
+
+        document.write('<br>')
+
+        playerhigh.map((player) => {
+            document.write("highest score of the player : " + player.Name)
+        })
 
     // var t= [1,2,3,4,5,6,7,8,9]
      //   t.reduce((a,b)=>{
