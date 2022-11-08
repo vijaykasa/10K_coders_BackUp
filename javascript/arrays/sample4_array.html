@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var players = ["Rahul","Rohit","kohli","hardik","pant","gill"] 
+
+       var playername = players.find(function(playerName){
+            return playerName.length == 5
+        })
+
+        console.log(playername)
+
+        var playername2 = players.map(function(playerName){
+            return playerName+"india"
+        })
+
+        
+        console.log(playername2)
+    </script>
+</body>
+</html>

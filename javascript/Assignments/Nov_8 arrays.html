@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var TeamPlayers = [
+            {
+                Name: "kl Rahul",
+                Runs: 4,
+                Balls: 8,
+                Fours: 1,
+                sixers: 1,
+                SR: 50,
+            },
+            {
+                Name: "Rohit Sharma",
+                Runs: 4,
+                Balls: 7,
+                Fours: 1,
+                sixers: 1,
+                SR: 57.14
+            },
+            {
+                Name: "Virat Kohli",
+                Runs: 82,
+                Balls: 53,
+                Fours: 6,
+                sixers: 4,
+                SR: 154.72
+            },
+            {
+                Name: "Suryakumar Yadav",
+                Runs: 15,
+                Balls: 10,
+                Fours: 2,
+                sixers: 0,
+                SR: 150
+            },
+            {
+                Name: "Axar Patel",
+                Runs: 2,
+                Balls: 3,
+                Fours: 0,
+                sixers: 0,
+                SR: 66.67
+            },
+            {
+                Name: "Hardik pandya",
+                Runs: 40,
+                Balls: 37,
+                Fours: 1,
+                sixers: 2,
+                SR: 108.11
+            },
+            {
+                Name: "Dinesh Karthik",
+                Runs: 1,
+                Balls: 2,
+                Fours: 0,
+                sixers: 0,
+                SR: 50
+            },
+            {
+                Name: "Ravichandran Ashwin",
+                Runs: 0,
+                Balls: 1,
+                Fours: 0,
+                sixers: 0,
+                SR: 100.00
+            }
+        ];
+
+
+        document.write("india vs pakistan score card" + "<br>");
+        document.write('<br>');
+
+        // displaying all players 
+
+        TeamPlayers.map((player) => {
+            for (i in player) {
+                document.write(i + ' : ' + player[i] + '<br>')
+            }
+            document.write('<br>')
+        });
+
+        // displaing each object in single line
+
+        TeamPlayers.map((player) => {
+
+            document.write(player.Name + "    " + player.Runs + "    " + player.Balls + "   " + player.Fours + "   " + player.sixers + "    " + player.SR + "    " + '<br>')
+
+            document.write
+        });
+
+        // cimulating the total Runs using reduce method
+
+        var totalScore = TeamPlayers.reduce((initialValue, player) => {
+
+            if (initialValue.Runs) {             // if statment for to switch the initial object into value
+
+                return initialValue.Runs + player.Runs
+            }
+            else {
+                return initialValue + player.Runs
+            }
+        })
+
+        document.write('<br>')
+        document.write("total score gained by indiaTeam" + " : " + totalScore)
+
+        //finding the total 4s hit by player using reduce method
+
+
+        var totalFours = TeamPlayers.reduce((initialValue, player) => {
+
+            if (initialValue.Fours) {             // if statment for to switch the initial object into value
+
+                return initialValue.Fours + player.Fours
+
+            }
+            else {
+                return initialValue + player.Fours
+            }
+        })
+
+        document.write('<br>')
+        document.write("total foures hit by all players" + " : " + totalFours)
+
+        //finding the total 6s hit by player using reduce method
+
+        var totalSixers = TeamPlayers.reduce((initialValue, player) => {
+
+            if (initialValue.sixers) {             // if statment for to switch the initial object into value
+
+                return initialValue.sixers + player.sixers
+                console.log(initialValue)
+            }
+            else {
+                return initialValue + player.sixers
+            }
+        })
+
+        document.write('<br>')
+        document.write("total sixers hit by all players" + " : " + totalSixers)
+
+        // finding the player who got low score below the 10 Runs using filter method
+
+        var nofPlayers = TeamPlayers.filter((player) => {
+
+            return player.Runs < 10
+        })
+
+        document.write('<br>')
+        document.write('<br>')
+        document.write('who got below the 10 runs names displayed below:')
+        document.write('<br>')
+        document.write('<br>')
+
+
+        nofPlayers.forEach((player) => {
+            document.write("Name:" + player.Name + "  /   " + "Runs:" + player.Runs + "<br>")
+        })
+
+        // finding the player who got high score aboue the 80 Runs using filter method
+
+
+
+        var nofPlayer = TeamPlayers.filter((player) => {
+
+            return player.Runs > 80
+        })
+
+        document.write('<br>')
+        document.write('<br>')
+        document.write('who got aboue the 80 runs names displayed below:')
+        document.write('<br>')
+        document.write('<br>')
+
+        nofPlayer.forEach((player) => {
+            document.write("Name:" + player.Name + "  /   " + "Runs:" + player.Runs + "<br>")
+        })
+
+        //using some method
+
+        var x = TeamPlayers.every((player) => {
+
+            return player.Runs > 0
+
+
+        })
+
+        //using boolen operation
+
+        document.write('<br>')
+
+        if (x == true) {
+            document.write("no player is deckout")
+        } else {
+            document.write("some player  got 0 score")
+        }
+
+
+
+
+    // var t= [1,2,3,4,5,6,7,8,9]
+     //   t.reduce((a,b)=>{
+     //   console.log("a :"+ a)
+     //   console.log("b :"+b)
+     //   return a+b
+     // })
+
+
+    </script>
+</body>
+
+</html>
