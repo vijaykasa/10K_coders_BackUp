@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var randomNumbers = Math.random() * 100;
+        console.log(Math.round(randomNumbers))
+
+        // var randonanaumber = []
+        //for (i = 0; i < 10; i++) {
+        //    var rNumbers = Math.round(Math.random() * 100000)
+        //    randonanaumber.push(rNumbers)
+        //}
+        //console.log(randonanaumber)
+
+        let i = 0;
+        while (i <= 10) {
+            console.log(i);
+            i++
+        }
+
+        //making the array by generating the 6value random nubers by using while loop
+
+        var randomNumber = []
+        while (randomNumber.length < 10) {
+            var rNumbers = Math.round(Math.random()*1000000)
+           if(String(rNumbers).length == 6) {
+                randomNumber.push(rNumbers)
+            }
+        }
+
+        console.log(randomNumber);
+
+        
+       
+        var x = 5.6
+        console.log("lower round figure value : ", Math.floor(x));  //gives the lowest round figure value
+        console.log("next round figure value : ", Math.ceil(x));    //gives the next round figure value
+
+        var t = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        console.log("minium value in array: ", Math.min(...t))
+        console.log("maximum value in array: ", Math.max(...t))
+
+         var l = Math.min.apply(null,t)
+
+         console.log(l);
+         var l = Math.min(...t)
+    </script>
+</body>
+
+</html>

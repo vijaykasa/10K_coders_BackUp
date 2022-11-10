@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var object1 = {
+            fname : "ravi",
+            lname : "prasad",
+            fullname :function(a){ 
+                console.log(a+' '+this.fname+' '+this.lname)
+                
+             },
+        }
+        var object2 = {
+            fname : "sai",
+            lname : "kumar"
+        }
+
+        var object3 = {
+            fname : "hari",
+            lname : "krishna"
+        }
+
+        var object4 = {
+            fname : "pavan",
+            lname : "kalyan"
+        }
+        object1.fullname();
+
+
+        //using object 1 function method for object 2 withput creating second function
+
+       object1.fullname.call(object2,"greetings")
+
+        object1.fullname.apply(object3,["greetings"])
+
+        var bindfunction = object1.fullname.bind(object4)
+
+        bindfunction("greetings")
+
+
+    </script>
+</body>
+</html>
