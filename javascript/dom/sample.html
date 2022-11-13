@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="main">
+            <h1>hello hi!</h1>
+            <h1>good morning</h1>
+        </div>
+        <div id="main1">
+            <h1>hello hi!</h1>
+            <h1>good morning</h1>
+        </div>
+        <div class="list-box">
+            <ul>
+                <li class="list">home</li>
+                <li class="list">about</li>
+                <li class="list">bolg</li>
+                <li class="list">contact</li>
+                <li class="list">log in</li>
+            </ul>
+
+        </div>
+    </div>
+    <script>
+        var main = document.getElementById("main")
+        main.innerText = ('<h1>hi<h1>')
+        console.log(main)
+
+        var main = document.getElementById("main1")
+        main1.innerHTML = ('<h1>hi<h1>')
+        console.log(main)
+
+        var list = document.querySelector(".list")
+        console.log(list)
+
+        var alli = document.getElementsByTagName("li")
+
+        console.log(alli)
+
+        console.log(alli[2])
+
+        alli[2].innerText = "service"
+        
+        console.log(alli[2]) 
+    </script>
+</body>
+
+</html>
