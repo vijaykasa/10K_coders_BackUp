@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid black;
+         border-collapse: collapse;
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script>
+        var userData = [
+            {
+                "id": 193,
+                "email": "HHauler@tellus.com",
+                "username": "JDevine",
+                "password": "CrByQ"
+            },
+            {
+                "id": 194,
+                "email": "PRoman@facilisis.ly",
+                "username": "RKlapper",
+                "password": "soKcK"
+            },
+            {
+                "id": 195,
+                "email": "YBetts@lacus.org",
+                "username": "NMitu",
+                "password": "fIQAA"
+            },
+            {
+                "id": 196,
+                "email": "ALessenberry@porttitor.io",
+                "username": "ABoblett",
+                "password": "hxmP3"
+            },
+            {
+                "id": 197,
+                "email": "HLevickis@lacus.ly",
+                "username": "DDaniello",
+                "password": "MQ5E4"
+            },
+            {
+                "id": 198,
+                "email": "ANunez@sapien.com",
+                "username": "CSam",
+                "password": "naiEM"
+            },
+            {
+                "id": 199,
+                "email": "BWillett@porttitor.org",
+                "username": "LBetts",
+                "password": "hYnnw"
+            },
+            {
+                "id": 200,
+                "email": "EWuertz@tincidunt.net",
+                "username": "EPearlstein",
+                "password": "lhXoW"
+            },
+            {
+                "id": 201,
+                "email": "NLehman@vitae.com",
+                "username": "JTuttle",
+                "password": "swz3z"
+            },
+            {
+                "id": 202,
+                "email": "ALandosky@nullam.com",
+                "username": "AOrmond",
+                "password": "lF9Wk"
+            }
+        ];
+        var table = document.createElement("table")
+       
+        var one = userData[0]
+        var thead = document.createElement("thead")
+        for (i in one) {
+            var th = document.createElement("th")
+            th.innerHTML = i
+            thead.appendChild(th)
+        }
+        table.appendChild(thead)
+        var tbody = document.createElement("tbody")
+        userData.forEach((user) => {
+            var tr = document.createElement("tr")
+            for (i in user) {
+                console.log("result:", i);
+                var td = document.createElement("td")
+                td.innerHTML = user[i]
+                tr.appendChild(td)
+            }
+            tbody.appendChild(tr)
+        });
+        table.appendChild(tbody)
+        document.querySelector(".container").appendChild(table)
+
+    </script>
+</body>
+
+</html>
