@@ -103,7 +103,11 @@
 
         var tbody = document.createElement("tbody");
         table.appendChild(tbody);
-        a.forEach((user) => {
+
+        var filterdata=[];
+        function display(cartItems){
+            tbody.innerHTML=""
+        cartItems.forEach((user,index) => {
             var tr = document.createElement("tr");
             for (i in user) {
                 var td = document.createElement("td");
@@ -133,8 +137,29 @@
                     tr.appendChild(td)
                 }
             }
+             var deletetd =document.createElement("td")
+             var button =document.createElement("button")
+             button.setAttribute("onclick","del("+index+")")
+             button.innerHTML="delete"
+             deletetd.appendChild(button)
+             tr.appendChild(deletetd)
+
             tbody.appendChild(tr);
         });
+    }
+    function del(cartindex){
+        if(filterdata.length == 0){
+            filterdata=a.filter((cartItem)=>{
+                return cartItem.id !==  a[cartindex].id
+            })
+        }else{
+            filterdata=filterdata.filter((cartItem)=>{
+                return cartItem.id !==  filterdata[cartindex].id
+            })
+        }
+        display(filterdata)
+    }
+    display(a);
     </script>
 </body>
 

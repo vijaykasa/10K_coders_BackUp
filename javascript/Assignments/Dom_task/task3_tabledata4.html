@@ -11,8 +11,9 @@
         th,
         td {
             border: 2px solid black;
-            border-collapse: collapse;           
+            border-collapse: collapse;
         }
+
         table {
             width: 100%;
             text-align: center;
@@ -32,6 +33,8 @@
                     <th rowspan="2">category</th>
                     <th rowspan="2">imag</th>
                     <th colspan="2">rating</th>
+                    <th rowspan="2">cart Items</th>
+
 
                 </tr>
                 <tr>
@@ -256,38 +259,56 @@
                 rating: { rate: 3.6, count: 145 },
             },
         ];
-
-        longData.forEach((user) => {
-            var rows = document.createElement("tr")
-            for (i in user) {
-                var cols = document.createElement("td")
-                if (i !== "image" && i !== "rating") {
+        var filterdata = [];
+        function show(items) {
+            document.querySelector("tbody").innerHTML = ""
+            items.forEach((user, index) => {
+                var rows = document.createElement("tr")
+                for (i in user) {
                     var cols = document.createElement("td")
-                    cols.innerHTML = user[i]
-                    rows.appendChild(cols)
-                } if (i == "image") {
-                    var myImg = document.createElement("img")
-                    myImg.setAttribute("src", user[i])
-                    myImg.style.width = "100px"
-                    cols.appendChild(myImg)
-                    rows.appendChild(cols)
-                } if (i == "rating") {
-                    var myobject = user[i]
-                    for (i in myobject) {
-                        var mytd = document.createElement("td")
-                        mytd.innerHTML = myobject[i]
-                        rows.appendChild(mytd)
+                    if (i !== "image" && i !== "rating") {
+                        var cols = document.createElement("td")
+                        cols.innerHTML = user[i]
+                        rows.appendChild(cols)
+                    } if (i == "image") {
+                        var myImg = document.createElement("img")
+                        myImg.setAttribute("src", user[i])
+                        myImg.style.width = "100px"
+                        cols.appendChild(myImg)
+                        rows.appendChild(cols)
+                    } if (i == "rating") {
+                        var myobject = user[i]
+                        for (i in myobject) {
+                            var mytd = document.createElement("td")
+                            mytd.innerHTML = myobject[i]
+                            rows.appendChild(mytd)
+                        }
                     }
                 }
+                var deletetd = document.createElement("td");
+                var button = document.createElement("button");
+                button.setAttribute("onclick", "del(" + index + ")");
+                button.innerHTML = "delete";
+                deletetd.appendChild(button);
+                rows.appendChild(deletetd);
+                document.querySelector("tbody").appendChild(rows)
+            });
+        }
+        function del(userIndex) {
+            if (filterdata.length == 0) {
+                filterdata = longData.filter((item, i) => {
+                    return item.id !== longData[userIndex].id;
+                });
+            } else {
+                filterdata = filterdata.filter((item, i) => {
+                    return item.id !== filterdata[userIndex].id;
+                });
             }
-            document.querySelector("tbody").appendChild(rows)
-        })
-
-
-
-
-
-
+            console.log(userIndex);
+            console.log(filterdata);
+            show(filterdata);
+        }
+        show(longData);
     </script>
 </body>
 
