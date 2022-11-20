@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      background-color: cornflowerblue;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .formdata {
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    table {
+      width: 80%;
+      margin: 50px;
+    }
+
+    .data {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    input,
+    label {
+      float: left;
+      font-size: 15px;
+    }
+
+    h3 {
+      padding: 10px;
+    }
+
+    label {
+      width: 110px;
+      padding: 20px;
+    }
+
+    button {
+      margin: 20px;
+      padding: 10px 20px;
+      width: 100px;
+      float: right;
+      border: none;
+      background-color: rgb(68, 68, 215);
+      border-radius: 10px;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    form div {
+      width: 450px;
+      background-color: rgb(90, 75, 141);
+      margin: 0px 0px 20px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+    }
+
+    input {
+      flex-grow: 1;
+      height: 36px;
+      border: none;
+      outline: none;
+    }
+
+    input[type="radio"] {
+      height: 20px;
+    }
+
+    select {
+      height: 40px;
+      border: none;
+      flex-grow: 1;
+      font-size: 15px;
+    }
+
+    .formdata {
+      width: 30%;
+    }
+
+    input[type="checkbox"] {
+      margin: 10px;
+      padding: 5px;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    #update {
+      display: none
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="formdata">
+      <fieldset>
+        <legend>Registration form</legend>
+        <form action="">
+          <div>
+            <label for="fname">First Name :</label>
+            <input type="text" name="" id="fname" />
+          </div>
+          <div>
+            <label for="lname">Last Name :</label>
+            <input type="text" name="" id="lname" />
+          </div>
+          <div>
+            <label for="DOB">Date of Birth :</label>
+            <input type="text" name="" id="DOB" />
+          </div>
+          <div>
+            <label for="email">Email id :</label>
+            <input type="text" name="" id="email" />
+          </div>
+          <div>
+            <label for="number">Mobile Number :</label>
+            <input type="text" name="" id="number" />
+          </div>
+          <div>
+            <label for="">Degree :</label>
+            <select name="" id="Degree">
+              <option value=></option>
+              <option value="Diploma">Diploma</option>
+              <option value="BTech">BTech</option>
+              <option value="MTech">MTech</option>
+              <option value=">MBA">MBA</option>
+            </select>
+          </div>
+          <div>
+            <label for="">Branch :</label>
+            <select name="" id="Branch">
+              <option value=></option>
+              <option value="MECH">MECH</option>
+              <option value="EEE">EEE</option>
+              <option value="ECE">ECE</option>
+              <option value="civil">civil</option>
+            </select>
+          </div>
+          <div>
+            <label for="">CGPA :</label>
+            <input type="number" id="CGPA" />
+          </div>
+          <div>
+            <label for="">Experience :</label>
+            <select name="" id="Experience">
+              <option value=></option>
+
+              <option value="1 year">1 year</option>
+              <option value="2 year">2 year</option>
+              <option value="3 year">3 year</option>
+            </select>
+          </div>
+          <div>
+            <label for="">gender:</label><br />
+            <input type="radio" name="gender" value="male" />
+            <h3>male</h3>
+            <input type="radio" name="gender" value="female" />
+            <h3>female</h3>
+          </div>
+          <div>
+            <label>subjects:</label><br />
+            <input type="checkbox" name="subject" id="" value="HTML" />
+            HTML
+            <input type="checkbox" name="subject" id="" value="JavaScript" />
+            javaScript
+            <input type="checkbox" name="subject" id="" value="CSS" />
+            CSS
+            <input type="checkbox" name="subject" id="" value="ReactJS" />
+            ReactJS
+          </div>
+
+          <button type="button" onclick="getvalue()" id="submit">submit</button>
+          <button type="button" onclick="editvalue()" id="update">update</button>
+        </form>
+      </fieldset>
+    </div>
+    <div class="data">
+      <table border="1">
+        <thead>
+          <th>firs name</th>
+          <th>last name</th>
+          <th>DOB</th>
+          <th>email</th>
+          <th>number</th>
+          <th>Degree</th>
+          <th>Branch</th>
+          <th>CGPA</th>
+          <th>Experience</th>
+          <th>gender</th>
+          <th>subjects</th>
+          <th>edit</th>
+          <th>delete</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="list"></div>
+  <script>
+    var userinfo = {
+      fname: "",
+      lname: "",
+      DOB: "",
+      email: "",
+      number: "",
+      Degree: "",
+      Branch: "",
+      CGPA: "",
+      Experience: "",
+      gender: "",
+      subjects: [],
+    };
+    var users = JSON.parse(localStorage.getItem("users"));
+    if (users == null) {
+      users = [];
+    }
+
+    //read the values that enter by user
+    function getvalue() {
+      var user = readuserfromform();
+      users.push(user);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      display(users);
+      clearform();
+    }
+    //displaying the values in table
+    function display(arry) {
+      document.querySelector("tbody").innerHTML = "";
+      arry.forEach((ele, ind) => {
+        var tr = document.createElement("tr");
+        for (i in ele) {
+          var td = document.createElement("td");
+          td.innerHTML = ele[i];
+          tr.appendChild(td);
+        }
+        var editTd = document.createElement("td");
+        var editBtn = document.createElement("button");
+        editBtn.innerHTML = "EDIT";
+        editBtn.setAttribute("onclick", "edituser(" + ind + ")");
+        editTd.appendChild(editBtn);
+        tr.appendChild(editTd);
+
+        var deletetd = document.createElement("td");
+        var button = document.createElement("button");
+        button.setAttribute("onclick", "del(" + ind + ")");
+        button.innerHTML = "Delete";
+        deletetd.appendChild(button);
+        tr.appendChild(deletetd);
+
+        document.querySelector("tbody").appendChild(tr);
+      });
+    }
+    display(users);
+    // clear the data after enter user input
+    function clearform() {
+      users.forEach((ele) => {
+        for (i in ele) {
+          if (i !== "gender" && i !== "subjects") {
+            document.getElementById(i).value = "";
+          } else if (i == "gender") {
+            var allradiobuttons = document.getElementsByName("gender");
+            allradiobuttons.forEach((ele) => {
+              ele.checked = false;
+            });
+          } else if (i == "subjects") {
+            var allcheckbox = document.getElementsByName("subject");
+            allcheckbox.forEach((ele) => {
+              ele.checked = false;
+            });
+          }
+        }
+      });
+    }
+    //delete the data
+    function del(i) {
+      console.log("deleteuser" + i);
+      users = users.filter((usr, index) => i !== index);
+      localStorage.setItem("users", JSON.stringify(users));
+      display(users);
+    }
+    // for getting the data in input filed
+    var getindex;
+    function edituser(i) {
+      var newuser = users[i];
+      getindex = i;
+      for (a in newuser) {
+        if (a !== "gender" && a !== "subjects") {
+          document.getElementById(a).value = newuser[a];
+        } else if (a == "gender") {
+          var allradiobuttons = document.getElementsByName("gender");
+          allradiobuttons.forEach((ele) => {
+            if (ele.value == newuser[a]) {
+              ele.checked = true;
+            }
+          });
+        } else if (a == "subjects") {
+          var allcheckbox = document.getElementsByName("subject");
+          allcheckbox.forEach((ele) => {
+            if (ele.value == newuser[a]) {
+              ele.checked = true;
+            }
+          });
+        }
+      }
+      document.getElementById("update").style.display = "block"
+      document.getElementById("submit").style.display = "none"
+    }
+    //for read the data from form
+    function readuserfromform() {
+      var person = { ...userinfo };
+      for (i in person) {
+        if (i !== "gender" && i !== "subjects") {
+          person[i] = document.getElementById(i).value;
+        } else if (i == "gender") {
+          var allradiobuttons = document.getElementsByName("gender");
+          allradiobuttons.forEach((ele) => {
+            if (ele.checked == true) {
+              person[i] = ele.value;
+            }
+          });
+        } else if (i == "subjects") {
+          person[i] = [];
+          var allcheckbox = document.getElementsByName("subject");
+          allcheckbox.forEach((ele) => {
+            if (ele.checked == true) {
+              person[i].push(ele.value);
+            }
+          });
+        }
+      }
+      return person;
+    }
+    // after edit the value update in table
+    function editvalue() {
+      var user = readuserfromform();
+      users[getindex] = user;
+      localStorage.setItem("users", JSON.stringify(users));
+      display(users);
+      document.getElementById("update").style.display = "none"
+      document.getElementById("submit").style.display = "block"
+    };
+  </script>
+</body>
+
+</html>
