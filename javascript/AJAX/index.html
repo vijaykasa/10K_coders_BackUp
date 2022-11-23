@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #updateuser {
+      display: none;
+    }
+
+    body {
+      display: flex;
+    }
+
+    .right {
+      margin: 20px;
+
+      flex-grow: 1;
+    }
+
+    .left {
+      width: 30%;
+      margin: 20px;
+      border: 1px solid black;
+      padding: 20px;
+    }
+  </style>
+
+  <body>
+    <div class="left">
+      <form action="">
+        <label for="id">id:</label><br />
+        <input type="text" id="id" disabled /><br />
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" /><br />
+        <label for="username">username :</label><br />
+        <input type="text" id="username" /><br />
+        <label for="email">email:</label><br />
+        <input type="text" id="email" /><br />
+        <label for="phone">Number :</label><br />
+        <input type="text" id="phone" /><br />
+        <label for="website">website :</label><br />
+        <input type="text" id="website" /><br />
+        <button type="button" onclick="creatUser()" id="creatuser">
+          creat
+        </button>
+        <button type="button" onclick="updateUser()" id="updateuser">
+          update
+        </button>
+      </form>
+    </div>
+    <div class="right">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>username</th>
+
+            <th>email</th>
+
+            <th>number</th>
+            <th>website</th>
+
+            <th>edit</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      var users = [];
+      var get_url = "http://localhost:3000/users";
+      function getdata() {
+        var getdata = new XMLHttpRequest();
+        console.log(getdata);
+        getdata.onreadystatechange = function () {
+          if (getdata.readyState == 4 && getdata.status == 200) {
+            users = JSON.parse(getdata.response);
+            displayuser(users);
+          }
+        };
+        //var get_url = "http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&age={index}&pretty=true"
+
+        getdata.open("GET", get_url);
+        getdata.send();
+      }
+      getdata();
+
+      function displayuser(user) {
+        document.querySelector("tbody").innerHTML = "";
+        users.forEach((ele, ind) => {
+          var tr = document.createElement("tr");
+          for (i in ele) {
+            if (i !== "address" && i !== "company") {
+              var td = document.createElement("td");
+              td.innerHTML = ele[i];
+              tr.appendChild(td);
+              console.log(ele[i]);
+            }
+          }
+          var editTd = document.createElement("td");
+          var editBtn = document.createElement("button");
+          editBtn.innerHTML = "EDIT";
+          editBtn.setAttribute("onclick", "edituser(" + ind + ")");
+          editTd.appendChild(editBtn);
+          tr.appendChild(editTd);
+
+          var deletetd = document.createElement("td");
+          var button = document.createElement("button");
+          button.setAttribute("onclick", "del(" + ind + ")");
+          button.innerHTML = "Delete";
+          deletetd.appendChild(button);
+          tr.appendChild(deletetd);
+
+          document.querySelector("tbody").appendChild(tr);
+        });
+      }
+      function edituser(i) {
+        var editUser = users[i];
+        for (a in editUser) {
+          if (a !== "address" && a !== "company") {
+            document.getElementById(a).value = editUser[a];
+          }
+        }
+        document.getElementById("creatuser").style.display = "none";
+        document.getElementById("updateuser").style.display = "block";
+      }
+
+      function del(i) {
+        console.log(i);
+        var delUser = new XMLHttpRequest();
+        delUser.onreadystatechange = function () {
+          if (delUser.readyState == 4 && delUser.status == 200) {
+            getdata();
+          }
+        };
+        delUser.open("DELETE", get_url + "/" + users[i].id);
+        delUser.send();
+      }
+
+      function readformdata() {
+        var user = {
+          id: "",
+          name: "",
+          username: "",
+          email: "",
+          phone: "",
+          website: "",
+        };
+        for (a in user) {
+          user[a] = document.getElementById(a).value;
+        }
+        return user;
+      }
+
+      function creatUser() {
+        var newUser = readformdata();
+        console.log(newUser);
+        var creatuser = new XMLHttpRequest();
+        creatuser.onreadystatechange = function () {
+          if (creatuser.readyState == 4 && creatuser.status == 201) {
+            getdata();
+          }
+        };
+        creatuser.open("POST", get_url);
+        creatuser.setRequestHeader("Content-Type", "application/json");
+        creatuser.send(JSON.stringify(newUser));
+      }
+      function updateUser(){
+        console.log("tes");
+        var newUser = readformdata();
+        var creatuser = new XMLHttpRequest();
+        creatuser.onreadystatechange = function () {
+          if (creatuser.readyState == 4 && creatuser.status == 200) {
+            getdata();
+          }
+        };
+        creatuser.open("PUT", get_url +"/"+ newUser.id);
+        creatuser.setRequestHeader("Content-Type", "application/json");
+        creatuser.send(JSON.stringify(newUser));
+      }
+    </script>
+  </body>
+</html>

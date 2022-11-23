@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+  #btnupdate{
+    display:none
+  }
+</style>
+
+<body>
+    <div class="container">
+        <form action="">
+            <div class="row mt-5">
+            <div class="mb-3  col-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="username" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="username" placeholder="">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="Cpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="Cpassword" placeholder="">
+              </div>
+
+              <button type="button" class="btn btn-primary" id="btnsubmit" onclick="getuser()">submit</button>
+              <button type="button" class="btn btn-primary" id="btnupdate" onclick="update()">update</button>
+        </form>
+    </div>
+    <div>
+        <table class="table mt-5">
+          <thead>
+            <tr>
+                <th>NAME</th>
+                <th>USER NAME</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+                <th>CONFIRM PASSWORD</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+
+            </tr>
+          </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="./creat.js"></script>
+    <script src="./delete.js"></script>
+    <script src="./read.js"></script>
+    <script src="./update.js"></script>
+</body>
+
+</html>
