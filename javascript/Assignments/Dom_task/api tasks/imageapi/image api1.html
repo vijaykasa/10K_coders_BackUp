@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100%;
+      }
+
+      #demo {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="demo"></div>
+
+    <button type="button" onclick="getdata()">getdata</button>
+    <button type="button" onclick="display()">display</button>
+    <script>
+      var user = [];
+
+      function getdata() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            user = JSON.parse(xhr.response);
+            console.log(user);
+          }
+        };
+        xhr.open(
+          "GET",
+          "https://best-manga-anime-wallpapers.p.rapidapi.com/wallpapers/attack-on-titan-hd-wallpapers"
+        );
+        xhr.setRequestHeader(
+          "X-RapidAPI-Key",
+          "ce6b395694mshab29401195e0916p1dbcf1jsnf6e2690910c8"
+        );
+        xhr.setRequestHeader(
+          "X-RapidAPI-Host",
+          "best-manga-anime-wallpapers.p.rapidapi.com"
+        );
+        xhr.send();
+      }
+      function display() {
+        user.forEach((ele) => {
+          var container = document.createElement("div");
+          var img = document.createElement("img");
+          img.style.height="300px"
+          container.style.margin="10px"
+          img.setAttribute("src", ele);
+          container.appendChild(img);
+          document.querySelector("#demo").appendChild(container);
+        });
+      }
+    </script>
+  </body>
+</html>

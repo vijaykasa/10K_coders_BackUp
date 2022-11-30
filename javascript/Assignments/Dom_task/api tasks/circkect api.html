@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header">
+        <input type="text" placeholder="enter playername" id="searchbar" />
+        <button type="button" onclick="playerdetails()">search</button>
+    </div>
+    
+    
+    
+
+    <div id="container">
+       
+        
+    </div>
+
+    <script>
+        function playerdetails() {
+            var playername = document.getElementById("searchbar").value;
+
+
+            var player = [];
+            function getplayerdata() {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            player = JSON.parse(xhr.response);
+                            resolve();
+                        }
+                    };
+                    xhr.open(
+                        "GET",
+                        "https://unofficial-cricbuzz.p.rapidapi.com/players/search?plrN=" + playername
+
+                    );
+                    xhr.setRequestHeader(
+                        "X-RapidAPI-Key",
+                        "ce6b395694mshab29401195e0916p1dbcf1jsnf6e2690910c8"
+                    );
+                    xhr.setRequestHeader(
+                        "X-RapidAPI-Host",
+                        "unofficial-cricbuzz.p.rapidapi.com"
+                    );
+                    xhr.send();
+                });
+            }
+
+            async function playerdata() {
+                try {
+                    console.log("connected");
+                    var data = await getplayerdata();
+                    console.log(player);
+                    playerid()
+                    alldata()
+                } catch {
+                    console.log("server not connected....");
+                }
+            }
+
+            function playerid() {
+                for (i in player) {
+                    var id = player[i][0].id;
+                    console.log(id);
+                    return id;
+                }
+            }
+
+            playerdata();
+
+
+
+
+            var playerinfo = [];
+
+            function getdata() {
+                return new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            playerinfo = JSON.parse(xhr.response);
+                            resolve();
+                        }
+                    };
+                    xhr.open(
+                        "GET",
+                        "https://unofficial-cricbuzz.p.rapidapi.com/players/get-info?playerId=" +
+                        playerid()
+                    );
+                    xhr.setRequestHeader(
+                        "X-RapidAPI-Key",
+                        "ce6b395694mshab29401195e0916p1dbcf1jsnf6e2690910c8"
+                    );
+                    xhr.setRequestHeader(
+                        "X-RapidAPI-Host",
+                        "unofficial-cricbuzz.p.rapidapi.com"
+                    );
+                    xhr.send();
+                });
+            }
+            async function alldata() {
+                try {
+                    console.log("connected");
+                    var data = await getdata();
+                    console.log(playerinfo);
+                    display()
+                } catch {
+                    console.log("server not connected....");
+                }
+            }
+            function display() {
+                var demo = document.getElementById("container")
+                demo.innerHTML = ""
+                var object = ""
+                for (i in playerinfo) {
+                    object +=i+" : "+ playerinfo[i] + "<br>"
+                }
+                demo.innerHTML = object
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    body{
+      background-color: rgba(33, 2, 2);
+    }
+    .demo {
+      background-color: rgba(33, 2, 2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .movie_bg {
+      background-color: rgba(32, 31, 31, 0.6);
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    img {
+      margin: 20px;
+    }
+
+    h3 {
+      text-transform: uppercase;
+      margin: 10px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo"></div>
+  <script>
+    var movieslist = [];
+
+    // function getdata() {
+
+    //    var data = new XMLHttpRequest();
+    //   data.onreadystatechange = function () {
+    //    if ((data.readyState = 4 && data.status == 200)) {
+    //     movieslist = JSON.parse(data.response);
+    //      resolve();
+    //     }
+    //     };
+    //      data.open(
+    //         "GET",
+    //         "https://imdb-top-100-movies.p.rapidapi.com/premiummovies"
+    //      );
+    //    data.setRequestHeader(
+    //      "X-RapidAPI-Key",
+    //       "ce6b395694mshab29401195e0916p1dbcf1jsnf6e2690910c8"
+    //    );
+    //   data.setRequestHeader(
+    //    "X-RapidAPI-Host",
+    //   "imdb-top-100-movies.p.rapidapi.com"
+    //  );
+    //  data.send();
+
+    //}
+
+
+
+
+
+    function getdata() {
+      return new Promise((resolve, reject) => {
+        var data = new XMLHttpRequest();
+        data.onreadystatechange = function () {
+          if ((data.readyState = 4 && data.status == 200)) {
+            movieslist = JSON.parse(data.response);
+            resolve();
+          }
+        };
+        data.open(
+          "GET",
+          "https://imdb-top-100-movies.p.rapidapi.com/premiummovies"
+        );
+        data.setRequestHeader(
+          "X-RapidAPI-Key",
+          "ce6b395694mshab29401195e0916p1dbcf1jsnf6e2690910c8"
+        );
+        data.setRequestHeader(
+          "X-RapidAPI-Host",
+          "imdb-top-100-movies.p.rapidapi.com"
+        );
+        data.send();
+      });
+    }
+
+
+    // getdata().then(() => {
+    //   console.log("serever connected");
+    //  var datalist = await getdata();
+    // console.log(movieslist);
+    //movieslist.forEach((ele) => {
+    //var movies = document.createElement("div");
+    //movies.setAttribute("class","movie_bg")
+    //var img = document.createElement("img");
+    //img.setAttribute("src", ele.image);
+    //movies.appendChild(img);
+    //var h1 = document.createElement("h1");
+    //h1.innerHTML = ele.title;
+    //movies.appendChild(h1);
+    //document.querySelector(".demo").appendChild(movies)
+
+
+    //})
+    //.catch(()=>{
+
+    // console.log("Some Isseue happend while hitting the API.. Try after some time !!"); 
+    // })
+
+    async function alldata() {
+      try {
+        console.log("connected");
+        var datalist = await getdata();
+        console.log(movieslist);
+        movieslist.forEach((ele) => {
+          var movies = document.createElement("div");
+          movies.setAttribute("class", "movie_bg")
+          var img = document.createElement("img");
+          img.setAttribute("src", ele.image);
+          movies.appendChild(img);
+          var h3 = document.createElement("h3");
+          h3.innerHTML = ele.title;
+          movies.appendChild(h3);
+          document.querySelector(".demo").appendChild(movies)
+        });
+      } catch {
+        console.log("server not conneted");
+      }
+    }
+    alldata();
+  </script>
+</body>
+
+</html>

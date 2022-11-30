@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="text" id="search_bar" placeholder="Song Name or Artist Name" />
+  <button type="button" onclick="searchbutton()">search</button>
+  <script>
+    var songList = [];
+    var params = {
+      q: "telugusongs",
+      type: "multi",
+      offset: "0",
+      limit: "10",
+      numberOfTopResults: "5",
+    };
+    function searchbutton() {
+      var search_value = document.getElementById("search_bar").value;
+      params.q = search_value;
+      alldata();
+    }
+
+    function farmatParams(params) {
+      return (
+        "?" +
+        Object.keys(params).map(function (key) {
+          return key + "=" + encodeURIComponent(params[key]);
+        })
+      );
+    }
+
+    function getdata() {
+      return new Promise((resolve, reject) => {
+        var data = new XMLHttpRequest();
+        data.onreadystatechange = function () {
+          if (data.readyState == 4 && data.status == 200) {
+            songList = JSON.parse(data.response);
+            console.log("yes");
+            resolve();
+          }
+        };
+        data.open(
+          "GET",
+          "https://spotify23.p.rapidapi.com/search/" + farmatParams(params)
+        );
+        data.setRequestHeader(
+          "X-RapidAPI-Key",
+          "ce6b395694mshab29401195e0916p1dbcf1jsnf6e2690910c8"
+        );
+        data.setRequestHeader("X-RapidAPI-Host", "spotify23.p.rapidapi.com");
+        data.send();
+      });
+    }
+
+    async function alldata() {
+      try {
+        var list = await getdata();
+        console.log("connected...");
+        console.log(songList);
+      } catch {
+        console.log("not connected...");
+      }
+    }
+   
+
+    alldata();
+    
+  </script>
+
+  
+</body>
+
+</html>

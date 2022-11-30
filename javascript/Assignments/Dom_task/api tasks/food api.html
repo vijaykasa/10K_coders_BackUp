@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        var foodlist = [];
+
+        //ajax syntex without promise method
+
+
+        //  function getdata() {
+        //      var data = new XMLHttpRequest();
+        //      data.onreadystatechange = function () {
+        //          if (data.readyState == 4 && data.status == 200) {
+        //              foodlist = JSON.parse(data.response);
+
+        //               resolve();
+        //      }
+        //     };
+        //    data.open(
+        //      "GET",
+        //      "https://www.themealdb.com/api/json/v1/1/categories.php"
+        // );
+        // data.send();
+        // }
+
+
+        //ajax syntex with promise method 
+
+
+        function getdata() {
+            return new Promise((resolve, reject) => {
+                var data = new XMLHttpRequest();
+                data.onreadystatechange = function () {
+                    if (data.readyState == 4 && data.status == 200) {
+                        foodlist = JSON.parse(data.response);
+                        console.log("yes");
+                        resolve();
+                    }
+                };
+                data.open(
+                    "GET",
+                    "https://www.themealdb.com/api/json/v1/1/categories.php"
+                );
+                data.send();
+            });
+        }
+
+
+        // getdata().then(() => {
+        //    console.log("connected...");
+        //   dispaly()
+        //}).catch(() => {
+        //  console.log("not connected...");
+
+        //}).finally(() => {
+
+        //})
+
+        async function alldata() {
+            try {
+                var list = await getdata();
+                console.log("connected...");
+                console.log(foodlist);
+                display();
+            } catch {
+                console.log("not connected...");
+            }
+        }
+
+        function display() {
+            for (i in foodlist) {
+                foodlist[i].forEach((ele) => {
+                    var container = document.createElement("div");
+                    var img = document.createElement("img");
+                    container.style.margin = "10px";
+                    img.setAttribute("src", ele.strCategoryThumb);
+                    container.appendChild(img);
+                    var h1 = document.createElement("h1");
+                    h1.innerHTML = ele.strCategory;
+                    container.appendChild(h1);
+                    document.querySelector("#demo").appendChild(container);
+                });
+            }
+        }
+
+        alldata();
+    </script>
+</body>
+
+</html>
