@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100vw;
+        height: 50vh;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: chartreuse;
+      }
+
+      #rectangle {
+        width: 25%;
+        height: 50%;
+        background-color: chocolate;
+        position: absolute;
+        display: none;
+      }
+
+      #circle {
+        width: 25%;
+        height: 50%;
+        background-color: chocolate;
+        border-radius: 50%;
+        position: absolute;
+        display: none;
+      }
+
+      #triangle {
+        width: 25%;
+        height: 50%;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        background-color: chocolate;
+        position: absolute;
+        display: none;
+      }
+
+      #hexagon {
+        width: 25%;
+        height: 50%;
+        background-color: chocolate;
+        clip-path: polygon(
+          30% 0%,
+          70% 0%,
+          100% 30%,
+          100% 70%,
+          70% 100%,
+          30% 100%,
+          0% 70%,
+          0% 30%
+        );
+        position: absolute;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" onmouseover="stopSlide()" onmouseout="startSlide()">
+      <div id="rectangle" ></div>
+      <div id="circle"></div>
+      <div id="triangle"></div>
+      <div id="hexagon"></div>
+    </div>
+    <script>
+      var rectangle = document.getElementById("rectangle");
+      var circle = document.getElementById("circle");
+      var triangle = document.getElementById("triangle");
+      var hexagon = document.getElementById("hexagon");
+
+      var arry = [rectangle, circle, triangle, hexagon];
+
+      function slide(i) {
+        arry[i].style.display = "block";
+        if (i > 0) {
+          arry[i - 1].style.display = "none";
+        }
+        if (i == 0) {
+          arry[arry.length-1].style.display = "none";
+        }
+      }
+
+      i = -1;
+      var sliding;
+      function startSlide() {
+        sliding = setInterval(() => {
+          if (i ==arry.length-1) {
+            i = -1;
+          }
+          i++;
+          console.log(i);
+          slide(i);
+        }, 1000);
+      }
+
+      function stopSlide() {
+        clearInterval(sliding);
+
+      }
+      startSlide();
+    </script>
+  </body>
+</html>
