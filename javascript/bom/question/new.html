@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5" >
+        <div><h1>add new question</h1></div>
+        <form >
+            <label for="id" class="form-label">ID</label>
+            <input type="text" id="id" class="form-control" disabled>
+            <label for="question" class="form-label">question</label>
+            <input type="text" id="question" class="form-control">
+            <label for="a"class="form-label" >A option</label>
+            <input type="text" id="a"class="form-control" >
+            <label for="b" class="form-label">B option</label>
+            <input type="text" id="b"class="form-control" >
+            <label for="c"class="form-label" >C option</label>
+            <input type="text" id="c" class="form-control">
+            <label for="d" class="form-label">D option</label>
+            <input type="text" id="d" class="form-control">
+            <label for="correct" class="form-label">Right option</label>
+            <input type="text" id="correct" class="form-control">
+        </form>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" onclick="submit()">submit</button>
+        </div>
+      
+    </div>
+
+
+    <script>
+
+function submit(){
+    fetch("http://localhost:3000/questions/",{
+        method:"POST",
+         headers:{
+            "content-Type":"application/json",
+         },
+         body:JSON.stringify(readData()),
+    }).then((res)=>{
+      return res.json()
+    }).then((res)=>{
+        window.location.href="index.html"
+    })
+}
+
+
+function readData(){
+    var newQuestion={
+        id:"",
+        question:"",
+        a:"",
+        b:"",
+        c:"",
+        d:"",
+        correct:""
+    }
+    for(i in newQuestion){
+        newQuestion[i]= document.getElementById(i).value
+    }
+    return newQuestion
+}
+       
+    </script>
+    
+</body>
+
+</html>

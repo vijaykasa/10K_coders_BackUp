@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: aliceblue;
+        }
+
+        .demo {
+            border: 2px solid rgb(180, 165, 165);
+            background-color: rgb(197, 230, 230);
+            width: 500px;
+            height: 300px;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        button {
+            width: 500px;
+            color: white;
+            font-size: 20px;
+
+            border: none;
+            height: 50px;
+            background-color: rgb(68, 68, 149);
+            cursor: pointer;
+        }
+
+        .resultbox {
+
+
+            text-align: center;
+            margin: 20px;
+
+        }
+        #slide{
+           
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="demo" id="wrapper">
+            <h1> <span id="id"></span><span>.</span>
+                <span id="question"></span>
+            </h1>
+
+            <div class="answers">
+                <form action="">
+                    <ul>
+                        <li>
+                            <input type="radio" name="answers" class="answers" value="a"  />
+                            <label id="a"></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="answers" class="answers" value="b"  />
+                            <label id="b"></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="answers" class="answers" value="c"  />
+                            <label id="c"></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="answers" class="answers" value="d" />
+                            <label id="d">
+                                
+                            </label>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="resultbox">
+                <p id="result">
+                </p>
+
+            </div>
+          
+        </div>
+        
+        <button type="button" onclick="check()" id="capture">Check</button>
+        <button type="button" onclick="submit()" id="slide">Next</button>
+        <a href="#" onclick="addnewquestion()">add new questions</a>
+    </div>
+        
+    
+    <div>
+        
+        
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
