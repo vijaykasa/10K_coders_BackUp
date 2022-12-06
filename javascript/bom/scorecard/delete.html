@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+
+<body>
+   
+    <div class="container text-center mt-5">
+        <h1>Delete bats man history</h1>
+        <p id="wrapper"></p>
+        <button type="button" onclick="addData()" class="btn btn-danger">delete</button>
+
+    </div>
+    
+    <script>
+
+        var url = window.location.href
+
+        var bat_idurl = url.substr(url.indexOf("?") + 1)
+        // console.log(bat_idurl);
+
+        var data
+        async function getdata() {
+            data = await (await fetch("http://localhost:3000/scorecard/1")).json()
+            console.log(data);
+            // console.log(data.batTeamDetails.batsmenData)
+            //delete data.batTeamDetails.batsmenData.bat_5
+            // console.log(data.batTeamDetails.batsmenData)
+            document.getElementById("wrapper").innerHTML="batsman id : "+bat_idurl
+        }
+        function remove() {
+            var batsmanscore = data.batTeamDetails.batsmenData
+            for (i in batsmanscore) {
+                for (a in batsmanscore[i]) {
+                    if (a == "batId") {
+                        if (batsmanscore[i][a] == bat_idurl) {
+                            document.getElementById("wrapper").innerHTML=""
+                            delete batsmanscore[i]
+                            console.log(data);
+                        }
+                    }
+                }
+            }
+            return data
+        }
+        getdata()
+        function addData() {
+            console.log("yes");
+            fetch("http://localhost:3000/scorecard/1", {
+                method: "PUT",
+                headers: {
+                    "content-Type": "application/json",
+                },
+                body: JSON.stringify(remove())
+            }).then((res) => {
+                return res.json()
+            }).then((res) => {
+                console.log(res);
+                window.location.href = "index.html"
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>

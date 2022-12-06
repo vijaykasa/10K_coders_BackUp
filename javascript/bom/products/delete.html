@@ -28,7 +28,7 @@
         var url = window.location.href
         console.log(url);
         var id = url.substr(url.lastIndexOf("?" + 1))
-        console.log(id);
+        console.log(typeof id);
 
         fetch("http://localhost:3000/products/" + id)
             .then((response) => {
