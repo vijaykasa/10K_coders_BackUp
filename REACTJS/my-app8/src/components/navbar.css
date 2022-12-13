@@ -1,0 +1,84 @@
+.navbar{
+    background-color: rgb(75, 75, 248);
+    width: 100%;
+    height: 55px;
+    display: flex;
+      
+}
+nav {
+    width: 100%;
+    display: flex;
+    
+    align-items: center;
+  }
+  .leftside{
+    display:flex;
+    align-items: center;
+    margin-left: 200px;
+
+
+  }
+  ul {
+    display: flex;
+    padding: 10px;
+    list-style-type: none;
+  }
+  ul li{
+    color: white;
+    margin: 10px;
+    font-size:18px;
+    padding: 1px 10px 3px 10px;
+    cursor: pointer;
+  }
+  form {
+    float: right;
+  }
+  ul li:hover {
+    color:black;
+    background-color: rgb(221, 244, 245);
+    border-radius: 5px;
+  }
+  .logo{
+   width: 75px;
+   
+
+  }
+  .logocontainer{
+    display: flex;
+    flex-direction:column;
+    margin-right: 20px;
+  }
+  .logocontainer a{
+    text-decoration: none;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    align-self: flex-start;
+    
+    font-size: 12px;
+  }
+  .searchbar{ 
+    background-color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; 
+    border-radius: 2px;
+}
+  .input{
+    width: 450px;
+    height: 30px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    margin-left: 5px;
+    border-radius: 2px;
+  }
+  .fa-solid{
+    align-self: center;
+    padding: 10px 15px;
+    color: rgb(125, 65, 228);
+    border-radius: 2px;
+}
+ 
+  

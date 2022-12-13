@@ -72,12 +72,12 @@ function check(){
       if (ele.value == arry[i].correct) {
         result.innerHTML = `your answer is right: ${arry[i].correct}`;
        score++;   
-      } else {      
-        result.innerHTML = `your answer is wrong the right answer is :${arry[i].correct}`;
-      }
-      capture.style.display="none"
-      slide.style.display="block"
-    }  
+      } 
+    }  else {      
+      result.innerHTML = `your answer is wrong the right answer is :${arry[i].correct}`;
+    }
+    capture.style.display="none"
+    slide.style.display="block"
   });  
 }
 
