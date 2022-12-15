@@ -62,7 +62,7 @@ export class Form1 extends Component {
         this.clearform()
       }
       deleteuser=(val,ind)=>{
-           let deleteuser = this.state.allstudents.filter((usr)=> usr.percentage !== val.percentage)
+           let deleteuser = this.state.allstudents.filter((usr,i)=> i !== ind)
            this.setState({allstudents:deleteuser})
       }
       render() {

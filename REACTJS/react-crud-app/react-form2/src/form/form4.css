@@ -1,0 +1,31 @@
+.content{
+    border: 2px solid rgb(211, 199, 199);
+    background-color: rgb(230, 237, 236);
+    position: relative;
+    left: 25%;
+    width: 50%;
+    margin:0px;
+    margin-top:50px
+}
+input{
+    background-color: aliceblue;
+    border:0.5px solid;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: auto;
+    height: 40px;
+    border-radius:5px
+}
+input:hover ,select:hover{
+    background-color: rgb(187, 155, 217);
+}
+select{
+    width:100px;
+    height: 40px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+option{
+    background-color: antiquewhite;
+}
+

@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
 
-export class form3 extends Component {
+export class Form3 extends Component {
     constructor(){
-        super()
+      super()
+      this.state={
+        gender:"",
+      }
+    }
+    showgender=(e)=>{
+        if(e.target.checked===true){
+          let values=e.target.value
+         this.setState({gender:values})
+        }
     }
     show=()=>{
-        
+      console.log(this.state.gender)
     }
   render() {
     return (
       <div>
-        <input type={"radio"} name="gender" value={"male"}/>male
-        <input type={"radio"} name="gender" value={"female"}/>female
-        <button onClick={this.show}>enter</button>
+        <input type={"radio"} name="gender" value={"male"} onChange={(e)=>{this.showgender(e)}}/>male
+        <br></br><input type={"radio"} name="gender" value={"female"} onChange={(e)=>{this.showgender(e)}}/>female
+        <br></br><button onClick={this.show}>enter</button>
       </div>
     )
   }
 }
 
-export default form3
+export default Form3
