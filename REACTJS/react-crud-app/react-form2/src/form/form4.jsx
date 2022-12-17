@@ -206,7 +206,7 @@ edituser=(val,ind)=>{
               <td>{val.username}</td>
               <td>{val.password}</td>
               <td>{val.email}</td>
-              <td>`{val.date + "/" + val.month + "/" + val.year}</td>
+              <td>{val.date + "/" + val.month + "/" + val.year}</td>
               <td>{val.weight}</td>
               <td>{val.height}</td>
               <td><button className="btn btn-warning" onClick={()=>{this.edituser(val,ind)}}>Edit</button></td>
