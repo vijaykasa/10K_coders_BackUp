@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 export class Form4 extends Component {
   constructor() {
     super();
     this.state = {
       student: {
-        id:"",
+        id: "",
         university: "",
         institute: "",
         branch: "",
@@ -17,57 +17,51 @@ export class Form4 extends Component {
         website: "",
         subjects: [],
       },
-      allstudents: [
-      ],
+      allstudents: [],
       index: null,
     };
   }
   capture = (e) => {
     let newstudent = { ...this.state.student };
-    
-    if (e.target.name === "gender") {
-      newstudent[e.target.name] = e.target.value;
-   
-    } else if (e.target.name === "subjects") {
-      
-        if (this.state.student.subjects.length === 0) {
+
+    if (e.target.name === "subjects") {
+      if (this.state.student.subjects.length === 0) {
         newstudent.subjects.push(e.target.value);
-      
-        } else {
+      } else {
         var check = this.state.student.subjects.find(
           (val) => val === e.target.value
         );
-           
-             if (check) {
-              newstudent.subjects = this.state.student.subjects.filter(
-              (val) => val !== e.target.value );
-        
-            } else {
-             newstudent.subjects.push(e.target.value);
-            }
+
+        if (check) {
+          newstudent.subjects = this.state.student.subjects.filter(
+            (val) => val !== e.target.value
+          );
+        } else {
+          newstudent.subjects.push(e.target.value);
         }
+      }
     } else {
       newstudent[e.target.name] = e.target.value;
     }
     this.setState({ student: newstudent });
   };
- 
+
   adduser = () => {
     axios({
-        method:"post",
-        url:"http://localhost:3002/studentdata",
-        data:this.state.student,
-        header:{
-            "contenr-Type":"application/json"
-        }
-   }).then((res)=> this.getdata())
+      method: "post",
+      url: "http://localhost:3002/studentdata",
+      data: this.state.student,
+      header: {
+        "contenr-Type": "application/json",
+      },
+    }).then((res) => this.getdata());
     this.clearForm();
   };
-  getdata = async () =>{
-    let response=await axios.get("http://localhost:3002/studentdata")
-    this.setState({allstudents:response.data})
-}
- 
+  getdata = async () => {
+    let response = await axios.get("http://localhost:3002/studentdata");
+    this.setState({ allstudents: response.data });
+  };
+
   clearForm = () => {
     let empty = {
       university: "",
@@ -87,22 +81,21 @@ export class Form4 extends Component {
   };
   updateuser = () => {
     axios({
-        method:"PUT",
-        url:"http://localhost:3002/studentdata/"+this.state.student.id,
-        data:this.state.student,
-        header:{
-            "contenr-Type":"application/json"
-        }
-   }).then((res)=> this.getdata())
+      method: "PUT",
+      url: "http://localhost:3002/studentdata/" + this.state.student.id,
+      data: this.state.student,
+      header: {
+        "contenr-Type": "application/json",
+      },
+    }).then((res) => this.getdata());
     this.clearForm();
   };
   deleteuser = (val, ind) => {
     axios({
-        method:"DELETE",
-            url:"http://localhost:3002/studentdata/"+val.id,
-           
-       }).then((res)=> this.getdata())
-      };
+      method: "DELETE",
+      url: "http://localhost:3002/studentdata/" + val.id,
+    }).then((res) => this.getdata());
+  };
   render() {
     let {
       university,
@@ -286,7 +279,7 @@ export class Form4 extends Component {
           <div className="col-8">
             <table className="table">
               <thead>
-                <tr>   
+                <tr>
                   {Object.keys(this.state.student).map((val, i) => (
                     <th key={i}>{val}</th>
                   ))}
@@ -297,7 +290,7 @@ export class Form4 extends Component {
               <tbody>
                 {this.state.allstudents.map((val, ind) => (
                   <tr key={ind}>
-                    {/* <td>{val.university}</td> */}  
+                    {/* <td>{val.university}</td> */}
                     {Object.values(val).map((ele, i) => (
                       <td key={i}>{ele}</td>
                     ))}
@@ -330,9 +323,9 @@ export class Form4 extends Component {
       </div>
     );
   }
-  async componentDidMount(){
-    let response=await axios.get("http://localhost:3002/studentdata")
-    this.setState({allstudents:response.data})
+  async componentDidMount() {
+    let response = await axios.get("http://localhost:3002/studentdata");
+    this.setState({ allstudents: response.data });
   }
 }
 
