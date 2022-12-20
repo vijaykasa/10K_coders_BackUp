@@ -4,7 +4,11 @@ export class Form3 extends Component {
   constructor() {
     super();
     this.state = {
-      data: { gender: "", range:null, subjects: [] },
+      data: { 
+        
+        gender: "",
+         range:null, 
+         subjects: [] },
       arraydata:[],
     };
   }
@@ -20,23 +24,20 @@ export class Form3 extends Component {
       this.setState({ data: values });
     } else if (e.target.name === "subjects") {
       if (this.state.data.subjects.length === 0) {
-        var newsubjects = [];
-        newsubjects.push(e.target.value);
-        values.subjects = newsubjects;
+        
+       values.subjects.push(e.target.value);
         this.setState({ data: values });
       } else {
         var check = this.state.data.subjects.find(
           (val) => val === e.target.value
         );
         if (check) {
-           newsubjects = this.state.data.subjects.filter(
+           values.subjects = this.state.data.subjects.filter(
             (val) => val !== e.target.value
           );
-          values.subjects = newsubjects;
         } else {
-          newsubjects = [...this.state.data.subjects];
-          newsubjects.push(e.target.value);
-          values.subjects = newsubjects;
+
+          values.subjects.push(e.target.value);
         }
         this.setState({ data: values });
       }
@@ -127,6 +128,7 @@ export class Form3 extends Component {
         />
         JAVASCRIPT
         <br />
+      
         <input
           type={"range"}
           name="range"

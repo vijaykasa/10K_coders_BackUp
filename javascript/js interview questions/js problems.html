@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.first question
+        var sum = (a, b) => {
+            return a + b
+        };
+        // console.log(sum(Number(prompt("enter an integer")),Number(prompt("enter an integer"))));
+        //2.
+        var converstion = minute => {
+            return minute * 60
+        }
+        //   console.log(converstion(Number(prompt("enter an value"))));
+        //3.
+        function increment(value) {
+            return value += 1
+        }
+        // console.log(increment(Number(prompt("enter value"))));
+        //4. 
+        function ageInDays(age) {
+
+            return age * 365
+        }
+        //   console.log(ageInDays(Number(prompt("enter value"))));
+        //5.
+        function power() {
+            const voltage = 5
+            const current = 0.2
+            return voltage * current
+        }
+        //   console.log(power()+"watt");
+        //6.
+        function concatinating(a) {
+            var string = "something"
+            return string + " " + a;
+        }
+        //    console.log(concatinating("stringvalue"));
+        //7.
+        function boolen(a, b) {
+            return (a + b == 10 || a == 10 || b == 10)
+        }
+        //        console.log(boolen(5,5));
+        //8.
+        function stringLength(a, b) {
+            return a.length == b.length
+        }
+        //  console.log(stringLength("hell0","world"));
+
+        //9.
+        var a = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
+        var phone;
+        function phoneNumber(tel) {
+            var n2 = "";
+            var n3 = "";
+            var n4 = "";
+            tel.forEach((n, i) => {
+                if (i < 3) {
+                    n2 += n.toString()
+                } else if (i < 6 && i > 2) {
+                    n3 += n.toString()
+                } else {
+                    n4 += n.toString()
+                }
+            })
+            phone = `(${n2})${n3}-${n4}`
+            console.log(phone);
+        }
+        phoneNumber(a)
+      //10.
+
+    </script>
+</body>
+
+</html>

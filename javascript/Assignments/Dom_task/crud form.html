@@ -316,11 +316,15 @@
           });
         } else if (a == "subjects") {
           var allcheckbox = document.getElementsByName("subject");
-          allcheckbox.forEach((ele) => {
-            if (ele.value == newuser[a]) {
-              ele.checked = true;
-            }
-          });
+          for(b in newuser[a]){
+            allcheckbox.forEach((ele) => {
+              if (ele.value == newuser[a][b]) {
+                ele.checked = true;
+              }
+            });
+          }
+         
+         
         }
       }
       document.getElementById("update").style.display = "block"

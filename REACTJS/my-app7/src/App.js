@@ -10,6 +10,7 @@ import Classcomponet7 from './ClassComponents/TaskClass7';
 import Classcomponet8 from './ClassComponents/TaskClass8';
 import Classcomponet9 from './ClassComponents/TaskClass9';
 import Classcomponet10 from './ClassComponents/TaskClass10';
+import Recipies from './ClassComponents/recipies';
 
 
 
@@ -17,7 +18,7 @@ function App() {
   return (
     <div className="App">
     <div>
-       <Classcomponet1/> 
+       {/* <Classcomponet1/> 
        <Classcomponet2/>
        <Classcomponet3/>
        <Classcomponet4/>
@@ -26,7 +27,8 @@ function App() {
        <Classcomponet7/>
        <Classcomponet8/>
        <Classcomponet9/>
-       <Classcomponet10/> 
+       <Classcomponet10/>  */}
+       <Recipies/>
     </div>
      
     </div>

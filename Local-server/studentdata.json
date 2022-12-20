@@ -1,0 +1,21 @@
+{
+  "studentdata": [
+    {
+      "id": 1,
+      "university": "Jntu",
+      "institute": "wise",
+      "branch": "Mechanical",
+      "degree": "B-Tech",
+      "percentage": "78",
+      "experince": "1",
+      "gender": "male",
+      "website": "google.com",
+      "subjects": [
+        "HTML",
+        "CSS",
+        "REACT",
+        "JAVASCRIPT"
+      ]
+    }
+  ]
+}
