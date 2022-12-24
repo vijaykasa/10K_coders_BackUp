@@ -1,0 +1,23 @@
+header{
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fff;
+    height:60px ;
+    background-color: aqua;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+nav ul li{   
+    padding-right:20px;
+}
+header div span{
+    margin-right: 20px;
+    color: blue;
+}
