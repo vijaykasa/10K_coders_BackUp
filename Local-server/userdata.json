@@ -79,28 +79,10 @@
       "id": 3
     },
     {
-      "firstname": "ravi",
-      "lastname": "kumar",
-      "email": "ravi@gamil.com",
-      "id": 4
-    },
-    {
       "firstname": "hari",
       "lastname": "krishna",
       "email": "hari@gamil.com",
       "id": 5
-    },
-    {
-      "firstname": "",
-      "lastname": "",
-      "email": "",
-      "id": 6
-    },
-    {
-      "firstname": "",
-      "lastname": "",
-      "email": "",
-      "id": 7
     }
   ]
 }
