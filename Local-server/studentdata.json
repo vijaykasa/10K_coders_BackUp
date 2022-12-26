@@ -16,9 +16,22 @@
         "REACT",
         "JAVASCRIPT"
       ]
+    },
+    {
+      "id": 2,
+      "university": "jtu",
+      "institute": "iit",
+      "branch": "Electrical",
+      "degree": "B-Tech",
+      "percentage": "75",
+      "experince": "1",
+      "gender": "male",
+      "website": "google.com",
+      "subjects": [
+        "REACT",
+        "HTML"
+      ]
     }
   ],
-  "studentdata2":[
-    
-  ]
+  "studentdata2": []
 }
