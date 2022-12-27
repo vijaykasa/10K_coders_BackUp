@@ -13,8 +13,7 @@ function App() {
       <AuthProvider>
       <h3>hello from auth project</h3>
       <Login/>
-     </AuthProvider>
-      
+     </AuthProvider>      
     </div>
   );
 }

@@ -2,9 +2,8 @@
   "useres": [
     {
       "id": 1,
-      "firstname": "vijay",
-      "lastname": "kumar",
-      "dob": "21/11/1997",
+      "fullname": "vijay",
+      "username": "vijay98",
       "email": "vijay984802@gmail.com",
       "number": "911070944"
     },
@@ -19,42 +18,54 @@
     {
       "id": 3,
       "fullname": "vijay",
-      "username": "",
-      "email": "",
+      "username": "vijay68",
+      "email": "dfsjkanfjkandf",
       "password": "12345",
       "confirmpassword": ""
     },
     {
       "id": 4,
       "fullname": "vijay",
-      "username": "",
-      "email": "",
+      "username": "hjvbdj",
+      "email": "jkdsfkjas",
       "password": "12345",
       "confirmpassword": ""
     },
     {
       "id": 5,
       "fullname": "vijay",
-      "username": "",
-      "email": "",
+      "username": "dfnsdk",
+      "email": "sjkdfnksdnfl",
       "password": "12345",
       "confirmpassword": ""
     },
     {
       "id": 6,
       "fullname": "vijay",
-      "username": "",
-      "email": "",
+      "username": "ckjkjsd",
+      "email": "ndksd",
       "password": "12345",
       "confirmpassword": ""
     },
     {
       "id": 7,
       "fullname": "vijay",
-      "username": "",
+      "username": "dnskjd",
       "email": "sdhfkjdshfs",
       "password": "12345",
       "confirmpassword": ""
+    },
+    {
+      "fullname": "vijay",
+      "username": "vijay00",
+      "email": "vijaykfjdslk",
+      "id": 8
+    },
+    {
+      "fullname": "raju kumar",
+      "username": "raju89",
+      "email": "vijay984802@gmail.com",
+      "id": 9
     }
   ],
   "userdata2": [
