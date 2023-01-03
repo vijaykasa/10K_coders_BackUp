@@ -1,19 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import Main from './component/main';
-import Parent from './component/Parent';
-import { AuthProvider } from './component/Auth';
-import Login from './component/useContext';
+import "./App.css";
+import { AuthProvider } from "./component/Auth";
+import Navbar from "./component/navbar";
+import { Routes, BrowserRouter, Route } from "react-router-dom";
+import Loginpage from "./component/loginpage";
 
 function App() {
   return (
     <div className="App">
-      <Parent/>
-      <hr/>
-      <AuthProvider>
-      <h3>hello from auth project</h3>
-      <Login/>
-     </AuthProvider>      
+      <BrowserRouter>
+        <AuthProvider>
+          <Navbar />
+          <h3>hello from auth project</h3>
+          <Routes>
+            <Route path="/login" element={<Loginpage />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   );
 }
